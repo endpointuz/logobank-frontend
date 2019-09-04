@@ -1,0 +1,12 @@
+@mixin load-google-font($name) {
+  @import url("https://fonts.googleapis.com/css?family=#{$name}:300,400,400i,700");
+}
+
+@mixin set-cells-sizes($name, $count) {
+  @for $i from 1 to $count + 1 {
+   &.#{$name}-#{$i} {
+     flex: 0 0 ($i * 100% / $count);
+     max-width: ($i * 100% / $count);
+   }
+ }
+}

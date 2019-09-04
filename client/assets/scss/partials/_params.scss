@@ -1,0 +1,43 @@
+// Main colors:
+$primaryColor: #77A6F7;
+$secondaryColor: #D3E3FC;
+$dangerColor: #FFCCBC;
+$infoColor: #84CEEB;
+$warningColor: #F8E9A1;
+$successColor: #57BA98;
+$gradientColor: linear-gradient(115deg, #7d93f3 0%, #8f6cde 100%);
+
+// Theme colors:
+$mainColor: #44318D;
+$lightColor: #FFF;
+
+// Text colors:
+$lightTextColor: #FFF;
+$darkTextColor: #000;
+$greyTextColor: #95959F;
+$darkGreyTextColor: rgba(32, 12, 43, .6);
+
+// Buttons types:
+$buttons: (
+  danger: $dangerColor,
+  primary: $primaryColor,
+  success: $successColor,
+  secondary: $secondaryColor,
+  info: $infoColor,
+  warning: $warningColor,
+  light: $lightColor,
+);
+
+$blueButton: #3B82FF;
+
+// Border color:
+$borderColor: #D3D4D8;
+
+// Sizes
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+);
+$sectionSize: 1200px;

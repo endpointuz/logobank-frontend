@@ -1,0 +1,62 @@
+@import "./partials/mixins";
+@import "./partials/params";
+@import "./reset.scss";
+@import "./button.scss";
+@import "./menu.scss";
+@import "./card.scss";
+@import "./section.scss";
+@import "./form.scss";
+@import "./shareButton.scss";
+@import "./main.scss";
+@import "./loader.scss";
+@import "./logoMain";
+@import "./about";
+@import "./addForm";
+@import "./alert";
+
+@include load-google-font("Montserrat");
+
+html, body {
+  font-family: "Montserrat";
+}
+
+@each $name, $value in $sizes {
+  .width-#{$name} {
+    width: $value;
+  }
+}
+
+.border {
+  border: 1px solid $borderColor;
+}
+.no-border {
+  border: none;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+// search
+.search {
+  &-container {
+    position: relative;
+    &-list {
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      -webkit-border-radius: 45px;
+      -moz-border-radius: 45px;
+      border-radius: 45px;
+      background-color: #fff;
+    }
+  }
+  &-item {
+    padding: 15px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+
+}

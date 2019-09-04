@@ -1,0 +1,122 @@
+.header {
+  background: $gradientColor;
+  position: relative;
+  &-title {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 1.5em 0 1em;
+  }
+  &-subtitle {
+    color: rgba(255, 255, 255, .6);
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 26px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 5em;
+  }
+
+  &-search {
+    position: absolute;
+    width: 100%;
+    bottom: -53px;
+  }
+  .mcs-form-search-prefix {
+    font-size: 32px;
+    color: #cdd0dc;
+    border: none;
+  }
+  .mcs-form-search-input-prefix {
+    border-top: none;
+    border-bottom: none;
+  }
+  .mcs-form-search-submit {
+    border: none;
+  }
+  .mcs-form-search {
+    border-radius: 45px;
+    box-shadow: 0px 5px 23px rgba(0,0,0,0.08);
+  }
+
+}
+
+.brands {
+  padding-top: 6em;
+  &#brands-second {
+    padding-bottom: 6em;
+  }
+  background-color: #f5f7fd;
+  &-title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-left: .5em;
+    padding-bottom: .6em;
+  }
+  .mcs-card {
+    padding-bottom: 2em;
+    &-title-container {
+      margin-top: 1em;
+    }
+  }
+}
+
+.brands {
+  .mcs-card.shadow {
+    box-shadow: 0px 16px 37px rgba(125,147,243,0.12);
+  }
+}
+
+.footer {
+  background-color: #200d2b;
+  padding: 2em 0;
+  &-counter {
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 300;
+  }
+  &-info {
+    color: #fff;
+    line-height: 22px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  &-menu {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3.5em;
+    &-item {
+      width: 100%;
+      text-align: center;
+      @media (min-width: 992px) {
+        width: auto;
+      }
+    }
+    &-link {
+      font-size: 14px;
+      text-align: center;
+      color: #7d93f3;
+      font-weight: 500;
+      @media (min-width: 992px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.mcs-menu .mcs-socials-group a,
+.mcs-menu .mcs-socials-group + .mcs-button {
+  line-height: 48px;
+}

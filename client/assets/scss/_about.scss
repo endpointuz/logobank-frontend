@@ -1,0 +1,29 @@
+.about {
+  background-color: #f5f7fd;
+  .mcs-section-cell {
+    padding: 0;
+  }
+  &-text {
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 30px;
+  }
+  &-title {
+    font-size: 38px;
+    font-weight: 700;
+    padding: 15px 0;
+  }
+  &-description {
+    padding: 10px 0;
+    line-height: 24px;
+  }
+  &-image {
+    width: 100%;
+    @media (min-width: 768px) {
+      width: 35%;
+      margin: 0 auto;
+    }
+  }
+}

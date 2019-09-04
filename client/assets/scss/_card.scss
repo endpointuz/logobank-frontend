@@ -1,0 +1,19 @@
+.mcs-card {
+  border-radius: 5px;
+  background-color: $lightColor;
+  &-image {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+  &-title-container {
+    padding: 1.4em;
+  }
+  &-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}

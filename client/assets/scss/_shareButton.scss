@@ -1,0 +1,22 @@
+.mcs-socials {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  width: auto;
+  @media (min-width: 992px) {
+    justify-content: flex-end;
+  }
+  &-group {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    overflow: hidden;
+    a {
+      margin-right: 1em;
+      box-sizing: border-box;
+      // line-height: 48px;
+    }
+  }
+}

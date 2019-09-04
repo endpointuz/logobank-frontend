@@ -1,0 +1,33 @@
+.mcs-section {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  &-cell {
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: .5em;
+    @media (min-width: 0) {
+      @include set-cells-sizes(xs, 12);
+    }
+    @media (min-width: 576px) {
+      @include set-cells-sizes(sm, 12);
+    }
+    @media (min-width: 768px) {
+      @include set-cells-sizes(md, 12);
+    }
+    @media (min-width: 992px) {
+      @include set-cells-sizes(lg, 12);
+    }
+    @media (min-width: 1200px) {
+      @include set-cells-sizes(xl, 12);
+    }
+  }
+  &.center {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,64 @@
+.logo {
+  background-color: #f5f7fd;
+  &-container {
+    & .mcs-section {
+      padding: 80px 50px 80px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+  }
+  &-description {
+    margin-bottom: 100px;
+    &-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    &-date {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: $greyTextColor;
+    }
+    &-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      color: $darkGreyTextColor;
+      margin-top: 40px;
+    }
+  }
+  &-download {
+    display: flex;
+    justify-content: space-between;
+    &-button {
+      width: 30%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: $blueButton;
+      font-size: 14px;
+      font-family: 'Montserrat', sans-serif;
+      border: 1px solid $blueButton;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      border-radius: 20px;
+      &:hover {
+        background-color: $blueButton;
+        color: $lightTextColor;
+      }
+    }
+  }
+}
+
+.morelogos {
+  background-color: #f5f7fd;
+  padding: 100px 0;
+  .mcs-section-cell {
+    padding: 0;
+  }
+  .brands-title {
+    padding-left: 0;
+  }
+}
