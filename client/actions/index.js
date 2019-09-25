@@ -17,7 +17,11 @@ export const getCategoriesSuccess = createAction('GET_CATEGORIES_SUCCESS');
 export const getCategories = () => async (dispatch) => {
   dispatch(getCategoriesRequest());
   try {
-    const response = await axios.get(routes.categories());
+    const response = await axios.get(routes.categories(), {
+      params: {
+        page_size: 100,
+      },
+    });
     dispatch(getCategoriesSuccess({ data: response.data }));
   } catch (e) {
     dispatch(getCategoriesFailure());
