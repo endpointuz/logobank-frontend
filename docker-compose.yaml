@@ -1,0 +1,11 @@
+version: "3"
+services:
+  server:
+    image: node:10.16-alpine
+    restart: always
+    volumes:
+      - ./build:/build
+      - ./public:/public
+    command: "node /build/server.js"
+    ports:
+      - "127.0.0.1:3003:3000"

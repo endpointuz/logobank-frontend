@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run build
+      - add_ssh_keys:
+            fingerprints:
+              - "23:5c:b7:18:6e:ae:32:d9:dc:41:0b:d7:59:5e:50:40"
+      - run: tar -cf build.tar build public
+      - run: ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+      - run: scp build.tar $SSH_USER@$SSH_HOST:~/logobank.uz/logobank_frontend/
+      - run: ssh $SSH_USER@$SSH_HOST "cd logobank.uz/logobank_frontend && tar -xf build.tar && git pull --rebase origin master && docker-compose restart"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
