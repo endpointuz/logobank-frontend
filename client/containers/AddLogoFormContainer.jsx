@@ -83,7 +83,7 @@ const AddLogoFormContainer = (props) => {
                   <Field name="description" id="description" className="addlogo-textarea" component="textarea" placeholder="Описание компании или логотипа" />
                 </SectionCell>
                 <SectionCell lg={4}>
-                  <label htmlFor="cdr">Файл .CDR или .AI</label>
+                  <label htmlFor="cdr">Файл .CDR, .AI или .PDF</label>
                   <Field name="files.logo_upload" id="cdr" component={InputFile} type="file" />
                 </SectionCell>
               </Section>

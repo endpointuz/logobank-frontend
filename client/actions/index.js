@@ -94,7 +94,7 @@ export const logoCreateRequest = createAction('LOGO_CREATE_REQUEST');
 export const logoCreateFailure = createAction('LOGO_CREATE_FAILURE');
 export const logoCreateSuccess = createAction('LOGO_CREATE_SUCCESS');
 
-export const logoCreate = data => async (dispatch) => {
+export const logoCreate = (data) => async (dispatch) => {
   dispatch(logoCreateRequest());
   try {
     const newData = new FormData();
@@ -103,7 +103,14 @@ export const logoCreate = data => async (dispatch) => {
     }
     newData.append('name', data.name);
     newData.append('category', data.category);
-    await axios.post(routes.logoCreate(), newData);
+    newData.append('description', data.description);
+    newData.append('files.logo_uploaded', data.files.logo_upload[0]);
+    console.log(data);
+    console.log(newData);
+
+    await axios.post(routes.logoCreate(), newData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
 
     dispatch(logoCreateSuccess());
     dispatch(showAlert({
