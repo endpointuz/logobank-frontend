@@ -65,7 +65,7 @@ const Brands = ({ logos, title }) => (
       <Section>
         {logos.map(brand => (
           <Section.SectionCell sm={6} md={4} lg={3} key={brand.id}>
-            <CardContainer style={{ position: 'relative' }}>
+            <CardContainer style={{ position: 'relative', height: '100%' }}>
               <Card className="shadow" link={brand.link}>
                 <Card.CardImage src={brand.preview} style={{ padding: '3.5em 2.5em 0 2.5em' }} />
                 <Card.CardTitle>{brand.name}</Card.CardTitle>

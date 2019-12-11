@@ -50,6 +50,7 @@ class DropdownItem extends React.Component {
             </Link>
           </li>
         ))}
+        <li className="divider" />
         <li className="mcs-menu-dropdown-item">
           <Link to={'/category'} className="mcs-menu-link" onClick={() => this.handleLeaveLink()}>
             Все категории

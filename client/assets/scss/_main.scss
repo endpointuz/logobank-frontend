@@ -64,6 +64,23 @@
   }
 }
 
+.morelogos {
+  background-color: #f5f7fd;
+  padding: 100px 0;
+
+  .brands-title {
+    padding-left: 0;
+  }
+  .mcs-card {
+    padding-bottom: 2em;
+    box-sizing: border-box;
+    height: 100%;
+    &-title-container {
+      margin-top: 1em;
+    }
+  }
+}
+
 .brands {
   .mcs-card.shadow {
     box-shadow: 0px 16px 37px rgba(125,147,243,0.12);
@@ -119,4 +136,11 @@
 .mcs-menu .mcs-socials-group a,
 .mcs-menu .mcs-socials-group + .mcs-button {
   line-height: 48px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 1.4rem;
+  background: $gradientColor;
 }
