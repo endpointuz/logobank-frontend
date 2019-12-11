@@ -61,7 +61,10 @@ class SingleLogo extends React.Component {
 
   render() {
     const { logoDetail = { category: '' }, logos = [] } = this.props;
-
+    const logosWithLink = logos.map(logo => ({
+      ...logo,
+      link: `/logos/${logo.id}`,
+    }));
     return (
       <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
         <Helmet>
@@ -94,7 +97,7 @@ class SingleLogo extends React.Component {
           />
         </section>
         <section className="morelogos">
-          <Brands logos={logos} title={`Другие логотипы из категории ${logoDetail.category.name}`} />
+          <Brands logos={logosWithLink} title={`Другие логотипы из категории ${logoDetail.category.name}`} />
         </section>
         <FooterContainer />
       </div>
