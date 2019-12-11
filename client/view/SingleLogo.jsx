@@ -48,9 +48,16 @@ class SingleLogo extends React.Component {
   }
 
   async componentDidUpdate(prevProps) {
-    const { logoDetail, getLogos } = this.props;
+    const {
+      logoDetail, getLogos, location, getLogoDetail,
+    } = this.props;
     if (prevProps.logoDetail !== logoDetail) {
       await getLogos({ category: logoDetail.category.id });
+    }
+    const prevSlug = last(prevProps.location.pathname.split('/').filter(el => el));
+    const currentSlug = last(location.pathname.split('/').filter(el => el));
+    if (prevSlug !== currentSlug) {
+      await getLogoDetail(currentSlug);
     }
   }
 
@@ -60,7 +67,7 @@ class SingleLogo extends React.Component {
   }
 
   render() {
-    const { logoDetail = { category: '' }, logos = [] } = this.props;
+    const { logoDetail = { category: '' }, logos = [], logoDetailStatus } = this.props;
     const logosWithLink = logos.map(logo => ({
       ...logo,
       link: `/logos/${logo.id}`,
@@ -94,6 +101,7 @@ class SingleLogo extends React.Component {
             date={logoDetail.created_at}
             description={logoDetail.description}
             files={logoDetail.files}
+            logoDetailStatus={logoDetailStatus}
           />
         </section>
         <section className="morelogos">

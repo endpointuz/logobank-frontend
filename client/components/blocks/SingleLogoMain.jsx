@@ -46,6 +46,7 @@ const SingleLogoMain = ({
   title,
   date,
   description,
+  logoDetailStatus, // TODO: add loader when switch between logo pages
   files = {},
 }) => (
     <div className="logo-container">
