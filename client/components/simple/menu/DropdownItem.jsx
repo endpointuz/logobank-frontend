@@ -39,23 +39,17 @@ class DropdownItem extends React.Component {
   }
 
   renderDropdownContainer = () => {
-    const { subItems = [], className } = this.props;
+    const { subItems = [], className = '' } = this.props;
 
     return (
       <ul className={`mcs-menu-dropdown ${className}`} >
-        {take(subItems, 4).map((categoryItem) => (
+        {subItems.map((categoryItem) => (
           <li className="mcs-menu-dropdown-item" key={categoryItem.id}>
             <Link to={`/category/${categoryItem.id}`} className="mcs-menu-link" onClick={() => this.handleLeaveLink()}>
               {categoryItem.name}
             </Link>
           </li>
         ))}
-        <li className="divider" />
-        <li className="mcs-menu-dropdown-item">
-          <Link to={'/category'} className="mcs-menu-link" onClick={() => this.handleLeaveLink()}>
-            Все категории
-          </Link>
-        </li>
       </ul>
     );
   }

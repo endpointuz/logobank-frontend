@@ -42,20 +42,36 @@ html, body {
   &-container {
     position: relative;
     &-list {
+      display: none;
       position: absolute;
       width: 100%;
       top: 100%;
-      -webkit-border-radius: 45px;
-      -moz-border-radius: 45px;
-      border-radius: 45px;
+      z-index: 10;
       background-color: #fff;
+      border-bottom-right-radius: 45px;
+      border-bottom-left-radius: 45px;
+      &.visible {
+        display: block;
+      }
     }
   }
   &-item {
-    padding: 15px 20px;
+    padding: 15px 20px 15px 79px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    @media (min-width: 576px) {
+      padding: 15px 20px 15px 18px;
+    }
+    @media (min-width: 769px) {
+      padding: 15px 20px 15px 60px;
+    }
+    @media (min-width: 992px) {
+      padding: 15px 20px 15px 64px;
+    }
+    @media (min-width: 1199px) {
+      padding: 15px 20px 15px 78px;
+    }
   }
 
 

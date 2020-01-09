@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { last } from 'lodash';
 import Navbar from '../components/blocks/HeaderNav';
-import SearchLogo from '../components/blocks/SearchLogo';
+import SearchLogoContainer from '../containers/SearchLogoContainer';
 import Brands from '../components/blocks/Brands';
 
 import * as actions from '../actions';
 import FooterContainer from '../containers/FooterContainer';
+
+import { titles } from '../content';
 
 
 const mapStateToProps = state => ({
@@ -68,9 +70,9 @@ class SingleCategory extends React.Component {
     return (
       <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
         <Helmet>
-          {/*<title>{frontTitle.homepage.title}</title>*/}
-          {/*<meta name="description" content={frontTitle.homepage.description} />*/}
-          {/*<meta name="keywords" content={frontTitle.homepage.keywords} />*/}
+          <title>{titles.singleCategory.title(currentCategory.name)}</title>
+          <meta name="description" content={titles.singleCategory.description(currentCategory.name)} />
+          <meta name="keywords" content={titles.singleCategory.keywords(currentCategory.name)} />
 
           {/*<meta property="og:type" content="article" />*/}
           {/*<meta property="og:site_name" content="Endpoint.uz" />*/}
@@ -100,7 +102,7 @@ class SingleCategory extends React.Component {
             <div className="mcs-section center">
               <div className="mcs-section-cell lg-10">
                 <div id="searching-logo" className="searching-logo">
-                  <SearchLogo />
+                  <SearchLogoContainer />
                 </div>
               </div>
             </div>

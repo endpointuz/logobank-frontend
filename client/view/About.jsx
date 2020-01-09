@@ -9,6 +9,8 @@ import * as actions from '../actions';
 import FooterContainer from '../containers/FooterContainer';
 import AboutMain from '../components/blocks/AboutMain';
 
+import { titles } from '../content';
+
 const mapStateToProps = (state) => ({
   categories: state.categories.list,
 });
@@ -47,9 +49,9 @@ class About extends React.Component {
     return (
       <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
         <Helmet>
-          {/* <title>{frontTitle.homepage.title}</title> */}
-          {/* <meta name="description" content={frontTitle.homepage.description} /> */}
-          {/* <meta name="keywords" content={frontTitle.homepage.keywords} /> */}
+           <title>{titles.about.title()}</title>
+           <meta name="description" content={titles.about.description()} />
+           <meta name="keywords" content={titles.about.keywords()} />
 
           {/* <meta property="og:type" content="article" /> */}
           {/* <meta property="og:site_name" content="Endpoint.uz" /> */}

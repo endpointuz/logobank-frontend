@@ -18,6 +18,7 @@
         visibility: visible;
         width: 100%;
         top: 100%;
+        z-index: 9;
         left: 0;
         padding: 0 2em;
         box-sizing: border-box;
@@ -136,23 +137,33 @@
     padding-left: 1em;
     &-item {
       padding: .5em 0;
+
     }
+
     @media (min-width: 992px) {
       position: absolute;
-      top: 150%;
+      display: flex;
+      flex-wrap: wrap;
+      top: 220%;
+      left: -207%;
+      width: 643%;
       border-width: 1px;
       border-style: solid;
       border-radius: 5px;
       padding: 1.6rem;
       z-index: 20;
+      font-size: 12px;
       &-item {
-        width: 100%;
-        white-space: nowrap;
-        padding: 0;
+        width: 23%;
+        padding: 1px 2px 1px;
+        box-sizing: border-box;
         &:not(:last-child) {
-          margin-bottom: 1.4rem;
+          margin-bottom: .7rem;
         }
       }
+    }
+    @media (min-width: 1050px) {
+      left: -131%;
     }
 
   }

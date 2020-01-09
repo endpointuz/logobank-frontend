@@ -1,7 +1,5 @@
 const host = 'https://logobank.uz:8005/api';
 
-
-
 export default {
   categories: () => [host, 'core/categories/'].join('/'),
   logos: () => [host, 'core/logos/'].join('/'),

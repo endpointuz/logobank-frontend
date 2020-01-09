@@ -10,6 +10,8 @@ import SingleLogoMain from '../components/blocks/SingleLogoMain';
 import Brands from '../components/blocks/Brands';
 import FooterContainer from '../containers/FooterContainer';
 
+import { titles, opengraph } from '../content';
+
 const mapStateToProps = state => ({
   categories: state.categories.list,
   logos: state.logos.list,
@@ -67,7 +69,7 @@ class SingleLogo extends React.Component {
   }
 
   render() {
-    const { logoDetail = { category: '' }, logos = [], logoDetailStatus } = this.props;
+    const { logoDetail = { category: '' }, logos = [], logoDetailStatus, location } = this.props;
     const logosWithLink = logos.map(logo => ({
       ...logo,
       link: `/logos/${logo.id}`,
@@ -75,17 +77,17 @@ class SingleLogo extends React.Component {
     return (
       <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
         <Helmet>
-          {/* <title>{frontTitle.homepage.title}</title> */}
-          {/* <meta name="description" content={frontTitle.homepage.description} /> */}
-          {/* <meta name="keywords" content={frontTitle.homepage.keywords} /> */}
+           <title>{titles.singleLogo.title(logoDetail.name)}</title>
+           <meta name="description" content={titles.singleLogo.description(logoDetail.name)} />
+           <meta name="keywords" content={titles.singleLogo.keywords(logoDetail.name)} />
 
-          {/* <meta property="og:type" content="article" /> */}
-          {/* <meta property="og:site_name" content="Endpoint.uz" /> */}
-          {/* <meta property="og:title" content={frontTitle.homepage.og.title} /> */}
-          {/* <meta property="og:description" content={frontTitle.homepage.og.description} /> */}
-          {/* <meta property="og:url" content={frontTitle.homepage.og.url} /> */}
-          {/* <meta property="og:image" content={`https://endpoint.uz${frontTitle.homepage.og.image}`} /> */}
-          {/* <meta property="og:locale" content="ru_RU" /> */}
+           <meta property="og:type" content="article" />
+           <meta property="og:site_name" content="Logobank.uz" />
+           <meta property="og:title" content={opengraph.singleLogo.title(logoDetail.name)} />
+           <meta property="og:description" content={opengraph.singleLogo.description(logoDetail.name)} />
+           <meta property="og:url" content={`https://logobank.uz${location.pathname}`} />
+           <meta property="og:image" content={logoDetail.preview} />
+           <meta property="og:locale" content="ru_RU" />
         </Helmet>
         <header className="header">
           <nav className="header-nav" id="header-nav">

@@ -2,10 +2,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import Navbar from '../components/blocks/HeaderNav';
-import SearchLogo from '../components/blocks/SearchLogo';
 import Brands from '../components/blocks/Brands';
 import FooterContainer from '../containers/FooterContainer';
+
+import sharePic from '../assets/img/opengraph.png';
+import { titles } from '../content';
 
 import * as actions from '../actions';
 import SearchLogoContainer from '../containers/SearchLogoContainer';
@@ -13,11 +16,13 @@ import SearchLogoContainer from '../containers/SearchLogoContainer';
 const mapStateToProps = state => ({
   categories: state.categories.list,
   logos: state.logos.list,
+  popularLogos: state.popularLogos.list,
 });
 
 const actionsCreators = {
   getCategories: actions.getCategories,
   getLogos: actions.getLogos,
+  getPopularLogos: actions.getPopularLogos,
 };
 
 @withRouter
@@ -28,11 +33,15 @@ class Homepage extends React.Component {
   }
 
   async componentDidMount() {
-    const { getCategories, getLogos } = this.props;
+    const { getCategories, getLogos, getPopularLogos } = this.props;
     await getCategories();
     await getLogos({
       page: 1,
-      page_size: 8,
+      page_size: 12,
+    });
+    await getPopularLogos({
+      page: 1,
+      page_size: 12,
     });
     setTimeout(() => {
       this.setState({ visible: true });
@@ -49,8 +58,13 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { logos, history, location } = this.props;
+    const { logos, popularLogos, history, location } = this.props;
     const logosWithLink = logos.map(logo => ({
+      ...logo,
+      link: `/logos/${logo.id}`,
+    }));
+
+    const popularLogosWithLink = popularLogos.map(logo => ({
       ...logo,
       link: `/logos/${logo.id}`,
     }));
@@ -58,17 +72,16 @@ class Homepage extends React.Component {
     return (
       <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
         <Helmet>
-          {/*<title>{frontTitle.homepage.title}</title>*/}
-          {/*<meta name="description" content={frontTitle.homepage.description} />*/}
-          {/*<meta name="keywords" content={frontTitle.homepage.keywords} />*/}
-
-          {/*<meta property="og:type" content="article" />*/}
-          {/*<meta property="og:site_name" content="Endpoint.uz" />*/}
-          {/*<meta property="og:title" content={frontTitle.homepage.og.title} />*/}
-          {/*<meta property="og:description" content={frontTitle.homepage.og.description} />*/}
-          {/*<meta property="og:url" content={frontTitle.homepage.og.url} />*/}
-          {/*<meta property="og:image" content={`https://endpoint.uz${frontTitle.homepage.og.image}`} />*/}
-          {/*<meta property="og:locale" content="ru_RU" />*/}
+          <title>{titles.home.title()}</title>
+          <meta name="description" content={titles.home.description()} />
+          <meta name="keywords" content={titles.home.keywords()} />
+          <meta property="og:type" content="article" />
+          <meta property="og:site_name" content="Logobank.uz" />
+          <meta property="og:title" content="Logobank.uz | Самая обновляемая коллекция логотипов в векторе" />
+          <meta property="og:description" content="Здесь Вы можете скачать логотипы известных фирм, предприятий и организаций Узбекистана в полпулярных форматах .cdr .png .eps" />
+          <meta property="og:url" content="https://logobank.uz" />
+          <meta property="og:image" content={`https://logobank.uz${sharePic}`} />
+          <meta property="og:locale" content="ru_RU" />
         </Helmet>
         <header className="header">
           <nav className="header-nav" id="header-nav">
@@ -100,7 +113,7 @@ class Homepage extends React.Component {
           <Brands logos={logosWithLink} title="Новые" />
         </section>
         <section className="brands" id="brands-second">
-          <Brands logos={logosWithLink} title="Популярные" />
+          <Brands logos={popularLogosWithLink} title="Популярные" />
         </section>
         <FooterContainer />
       </div>

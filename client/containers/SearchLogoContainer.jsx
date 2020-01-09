@@ -7,12 +7,16 @@ import SearchLogo from '../components/blocks/SearchLogo';
 
 const mapStateToProps = (state) => ({
   foundLogos: state.foundLogos,
+  searchState: state.searchState,
 });
 
 const actionsCreators = {
   searchLogo: actions.searchLogos,
   clearFoundLogos: actions.clearFoundLogos,
+  focus: actions.searchFocus,
+  blur: actions.searchBlur,
 };
+
 @withRouter
 @connect(mapStateToProps, actionsCreators)
 class SearchLogoContainer extends React.Component {
@@ -41,13 +45,17 @@ class SearchLogoContainer extends React.Component {
   }
 
   render() {
+    const visible = this.props.foundLogos.list.length > 0 && this.props.searchState.focus;
     return (
       <div className="search-container">
         <SearchLogo
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          onFocus={this.props.focus}
+          onBlur={this.props.blur}
+          visibleResults={visible}
         />
-        <ul className="search-container-list">
+        <ul className={`search-container-list${visible ? ' visible' : ''}`}>
           {this.props.foundLogos.list.map((logo) => (
             <li key={logo.id} className="search-item">
               <Link to={`/logos/${logo.id}`}>{logo.name}</Link>

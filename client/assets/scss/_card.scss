@@ -1,6 +1,8 @@
 .mcs-card {
   border-radius: 5px;
   background-color: $lightColor;
+  box-sizing: border-box;
+  height: 100%;
   &-image {
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -15,5 +17,8 @@
     left: 0;
     bottom: 0;
     right: 0;
+  }
+  &-title {
+    font-size: 12px;
   }
 }

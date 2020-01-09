@@ -8,6 +8,9 @@ export const toggleRequestVisibility = createAction('REQUEST_VISIBILITY_TOGGLE')
 export const showAlert = createAction('ALERT_SHOW');
 export const hideAlert = createAction('ALERT_HIDE');
 
+export const searchFocus = createAction('SEARCH_FOCUS');
+export const searchBlur = createAction('SEARCH_BLUR');
+
 export const setFilterTag = createAction('FILTER_TAG_ACTION');
 
 export const getCategoriesRequest = createAction('GET_CATEGORIES_REQUEST');
@@ -32,7 +35,7 @@ export const getLogosRequest = createAction('GET_LOGOS_REQUEST');
 export const getLogosFailure = createAction('GET_LOGOS_FAILURE');
 export const getLogosSuccess = createAction('GET_LOGOS_SUCCESS');
 
-export const getLogos = query => async (dispatch) => {
+export const getLogos = (query) => async (dispatch) => {
   dispatch(getLogosRequest());
   try {
     const response = await axios.get(routes.logos(), {
@@ -41,6 +44,25 @@ export const getLogos = query => async (dispatch) => {
     dispatch(getLogosSuccess({ data: response.data }));
   } catch (e) {
     dispatch(getLogosFailure());
+  }
+};
+
+export const getPopularLogosRequest = createAction('GET_POPULAR_LOGOS_REQUEST');
+export const getPopularLogosFailure = createAction('GET_POPULAR_LOGOS_FAILURE');
+export const getPopularLogosSuccess = createAction('GET_POPULAR_LOGOS_SUCCESS');
+
+export const getPopularLogos = (query) => async (dispatch) => {
+  dispatch(getPopularLogosRequest());
+  try {
+    const response = await axios.get(routes.logos(), {
+      params: {
+        ...query,
+        ordering: 'views',
+      },
+    });
+    dispatch(getPopularLogosSuccess({ data: response.data }));
+  } catch (e) {
+    dispatch(getPopularLogosFailure());
   }
 };
 

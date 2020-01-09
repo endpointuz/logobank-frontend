@@ -4,7 +4,7 @@ import { isReactComponent } from '../../../utils';
 
 const SearchInput = (props) => {
   const {
-    className, buttonText = 'Search', prefix = '', value, ...rest
+    className, buttonText = 'Search', prefix = '', value, visibleResults, ...rest
   } = props;
 
   const userClasses = className || '';
@@ -18,7 +18,7 @@ const SearchInput = (props) => {
   const RenderPrefix = prefix;
 
   return (
-    <div className={`mcs-form-search ${userClasses}`}>
+    <div className={`mcs-form-search ${userClasses}${visibleResults ? ' rounded-bottom-0' : ''}`}>
       {prefix
         ? <button type="button" className="mcs-form-search-prefix" onClick={handleClick}>
           {isReactComponent(prefix) ? <RenderPrefix /> : prefix}
@@ -30,6 +30,8 @@ const SearchInput = (props) => {
         name="search"
         value={value.value}
         autoComplete="off"
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
         {...rest}
       />
       <button type="submit" className="mcs-form-search-submit">{buttonText}</button>

@@ -1,4 +1,5 @@
 .mcs-form {
+
   &-input {
     padding: .75em 1.2em;
     font-size: 16px;
@@ -16,6 +17,19 @@
     display: -ms-flex;
     display: flex;
     box-sizing: border-box;
+    &.rounded-bottom-0 {
+      .mcs-form-search-prefix {
+        border-bottom-left-radius: 0;
+      }
+      .mcs-form-search-submit {
+        border-bottom-right-radius: 0;
+      }
+      @media (max-width: 768px) {
+        .mcs-form-search-input-prefix {
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
     &-input {
       border-top-left-radius: 45px;
       border-bottom-left-radius: 45px;

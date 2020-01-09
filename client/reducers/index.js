@@ -52,6 +52,30 @@ const logos = handleActions({
   status: null,
 });
 
+const popularLogos = handleActions({
+  [actions.getPopularLogosRequest](state) {
+    return {
+      ...state,
+      status: 'request',
+    };
+  },
+  [actions.getPopularLogosFailure](state) {
+    return {
+      ...state,
+      status: 'failure',
+    };
+  },
+  [actions.getPopularLogosSuccess](state, { payload: { data } }) {
+    return {
+      list: data.results,
+      status: 'success',
+    };
+  },
+}, {
+  list: [],
+  status: null,
+});
+
 const logoDetail = handleActions({
   [actions.getLogoDetailFailure](state) {
     return {
@@ -143,12 +167,31 @@ const foundLogos = handleActions({
   status: null,
 });
 
+const searchState = handleActions({
+  [actions.searchFocus](state) {
+    return {
+      ...state,
+      focus: true,
+    };
+  },
+  [actions.searchBlur](state) {
+    return {
+      ...state,
+      focus: false,
+    }
+  }
+}, {
+  focus: false,
+});
+
 export default combineReducers({
   categories,
   logos,
+  popularLogos,
   logoDetail,
   logosCount,
   notification,
   foundLogos,
+  searchState,
   form: formReducer,
 });
