@@ -35,13 +35,13 @@ export const getLogosRequest = createAction('GET_LOGOS_REQUEST');
 export const getLogosFailure = createAction('GET_LOGOS_FAILURE');
 export const getLogosSuccess = createAction('GET_LOGOS_SUCCESS');
 
-export const getLogos = (query) => async (dispatch) => {
+export const getLogos = (query, shouldConcat = false) => async (dispatch) => {
   dispatch(getLogosRequest());
   try {
     const response = await axios.get(routes.logos(), {
       params: query,
     });
-    dispatch(getLogosSuccess({ data: response.data }));
+    dispatch(getLogosSuccess({ data: response.data, shouldConcat }));
   } catch (e) {
     dispatch(getLogosFailure());
   }

@@ -45,6 +45,14 @@
 
 .brands {
   padding-top: 6em;
+  &-more-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
   &#brands-second {
     padding-bottom: 6em;
   }
@@ -56,12 +64,6 @@
     padding-left: .5em;
     padding-bottom: .6em;
   }
-  .mcs-card {
-    padding-bottom: 2em;
-    &-title-container {
-      margin-top: 1em;
-    }
-  }
 }
 
 .morelogos {
@@ -72,12 +74,9 @@
     padding-left: 0;
   }
   .mcs-card {
-    padding-bottom: 2em;
+    //padding-bottom: 2em;
     box-sizing: border-box;
     height: 100%;
-    &-title-container {
-      margin-top: 1em;
-    }
   }
 }
 

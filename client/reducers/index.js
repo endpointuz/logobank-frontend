@@ -41,9 +41,10 @@ const logos = handleActions({
       status: 'failure',
     };
   },
-  [actions.getLogosSuccess](state, { payload: { data } }) {
+  [actions.getLogosSuccess](state, { payload: { data, shouldConcat } }) {
     return {
-      list: data.results,
+      list: shouldConcat ? [...state.list, ...data.results] : data.results,
+      next: data.next,
       status: 'success',
     };
   },

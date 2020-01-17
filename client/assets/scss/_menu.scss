@@ -54,6 +54,10 @@
     color: $darkTextColor;
     & .mcs-menu-link {
       color: $lightTextColor;
+      &:hover {
+        color: $mainColor;
+        text-decoration: underline;
+      }
       @media (min-width: 992px) {
         color: $darkTextColor;
       }
@@ -135,9 +139,10 @@
   // Dropdown styles
   &-dropdown {
     padding-left: 1em;
+    box-shadow: 0px 5px 10px 0px rgba(0, 4, 49, 0.1);
     &-item {
       padding: .5em 0;
-
+      line-height: 16px;
     }
 
     @media (min-width: 992px) {
@@ -150,7 +155,7 @@
       border-width: 1px;
       border-style: solid;
       border-radius: 5px;
-      padding: 1.6rem;
+      padding: 1.1rem;
       z-index: 20;
       font-size: 12px;
       &-item {

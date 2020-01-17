@@ -16,6 +16,7 @@ import { titles } from '../content';
 const mapStateToProps = state => ({
   categories: state.categories.list,
   logos: state.logos.list,
+  nextLogos: state.logos.next,
 });
 
 const actionsCreators = {
@@ -35,7 +36,11 @@ class SingleCategory extends React.Component {
     const { getCategories, getLogos, location } = this.props;
     const category = last(location.pathname.split('/').filter(el => el));
     await getCategories();
-    await getLogos({ category });
+    await getLogos({
+      category,
+      page: 1,
+      page_size: 11,
+    });
     setTimeout(() => {
       this.setState({ visible: true });
       document.querySelector('.loader').classList.add('loaded');
@@ -59,7 +64,9 @@ class SingleCategory extends React.Component {
   }
 
   render() {
-    const { logos, categories, location } = this.props;
+    const {
+      logos, categories, location, nextLogos, getLogos,
+    } = this.props;
     const currentSlug = last(location.pathname.split('/').filter(el => el));
     const logosWithLink = logos.map(logo => ({
       ...logo,
@@ -110,7 +117,7 @@ class SingleCategory extends React.Component {
           </div>
         </header>
         <section className="brands" id="brands-first">
-          <Brands logos={logosWithLink} title="Результаты" />
+          <Brands logos={logosWithLink} title="Результаты" next={nextLogos} getLogos={getLogos} />
         </section>
         <FooterContainer />
       </div>

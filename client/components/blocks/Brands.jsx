@@ -1,4 +1,6 @@
 import React from 'react';
+import url from 'url';
+import querystring from 'querystring';
 import pose from 'react-pose';
 import paymeBrand from '../../assets/img/payme_01.png';
 
@@ -56,26 +58,53 @@ const brands = [
   },
 ];
 
-const Brands = ({ logos, title }) => (
-  <Section>
-    <Section.SectionCell lg={12}>
-      <h2 className="brands-title">{title}</h2>
-    </Section.SectionCell>
-    <Section.SectionCell lg={12}>
-      <Section>
-        {logos.map(brand => (
-          <Section.SectionCell sm={6} md={4} lg={2} key={brand.id}>
-            <CardContainer style={{ position: 'relative', height: '100%' }}>
-              <Card className="shadow" link={brand.link}>
-                <Card.CardImage src={brand.preview} style={{ padding: '3.5em 2.5em 0 2.5em' }} />
-                <Card.CardTitle>{brand.name}</Card.CardTitle>
-              </Card>
-            </CardContainer>
-          </Section.SectionCell>
-        ))}
-      </Section>
-    </Section.SectionCell>
-  </Section>
-);
+const Brands = ({ logos, title, next = null, getLogos }) => {
+  const loadMoreLogos = async (e) => {
+    e.preventDefault();
+    const query = querystring.parse(url.parse(next).query);
+    /**
+     * getLogos(queryParams, shouldConcatData)
+     */
+    await getLogos(query, true);
+  };
+
+  return (
+    <Section>
+      <Section.SectionCell lg={12}>
+        <h2 className="brands-title">{title}</h2>
+      </Section.SectionCell>
+      <Section.SectionCell lg={12}>
+        <Section>
+          {logos.map(brand => (
+            <Section.SectionCell sm={6} md={4} lg={2} key={brand.id}>
+              <CardContainer style={{ position: 'relative', height: '100%' }}>
+                <Card className="shadow" link={brand.link}>
+                  <Card.CardImage src={brand.preview} className="p-1" />
+                  <Card.CardTitle>{brand.name}</Card.CardTitle>
+                </Card>
+              </CardContainer>
+            </Section.SectionCell>
+          ))}
+          {
+            next
+              ? (
+                <Section.SectionCell sm={6} md={4} lg={2}>
+                  <CardContainer style={{ position: 'relative', height: '100%' }}>
+                    <Card className="shadow">
+                      <Card.CardTitle middle={true}>
+                        Загрузить еще...
+                        <a href="#" className="brands-more-link" onClick={loadMoreLogos} />
+                      </Card.CardTitle>
+                    </Card>
+                  </CardContainer>
+                </Section.SectionCell>
+              )
+              : null
+          }
+        </Section>
+      </Section.SectionCell>
+    </Section>
+  );
+}
 
 export default Brands;

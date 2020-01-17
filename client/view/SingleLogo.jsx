@@ -15,6 +15,7 @@ import { titles, opengraph } from '../content';
 const mapStateToProps = state => ({
   categories: state.categories.list,
   logos: state.logos.list,
+  nextLogos: state.logos.next,
   logoDetail: state.logoDetail.detail,
   logoDetailStatus: state.logoDetail.status,
 });
@@ -69,7 +70,9 @@ class SingleLogo extends React.Component {
   }
 
   render() {
-    const { logoDetail = { category: '' }, logos = [], logoDetailStatus, location } = this.props;
+    const {
+      logoDetail = { category: '' }, logos = [], logoDetailStatus, location, nextLogos, getLogos,
+    } = this.props;
     const logosWithLink = logos.map(logo => ({
       ...logo,
       link: `/logos/${logo.id}`,
@@ -108,7 +111,7 @@ class SingleLogo extends React.Component {
           />
         </section>
         <section className="morelogos">
-          <Brands logos={logosWithLink} title={`Другие логотипы из категории ${logoDetail.category.name}`} />
+          <Brands logos={logosWithLink} title={`Другие логотипы из категории ${logoDetail.category.name}`} next={nextLogos} getLogos={getLogos} />
         </section>
         <FooterContainer />
       </div>
