@@ -47,12 +47,11 @@ class SearchLogoContainer extends React.Component {
   render() {
     const visible = this.props.foundLogos.list.length > 0 && this.props.searchState.focus;
     return (
-      <div className="search-container">
+      <div className="search-container" onFocus={(e) => {e.stopPropagation(); this.props.focus(); }} onClick={(e) => { e.stopPropagation(); }}>
         <SearchLogo
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-          onFocus={this.props.focus}
-          onBlur={this.props.blur}
+          // onFocus={this.props.focus}
           visibleResults={visible}
         />
         <ul className={`search-container-list${visible ? ' visible' : ''}`}>

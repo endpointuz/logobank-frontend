@@ -23,6 +23,7 @@ const actionsCreators = {
   getCategories: actions.getCategories,
   getLogos: actions.getLogos,
   getPopularLogos: actions.getPopularLogos,
+  blur: actions.searchBlur,
 };
 
 @withRouter
@@ -70,7 +71,9 @@ class Homepage extends React.Component {
     }));
 
     return (
-      <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
+      <div className={`wrapper ${this.state.visible ? '' : 'load'}`} onClick={(e) => {
+        this.props.blur();
+      }}>
         <Helmet>
           <title>{titles.home.title()}</title>
           <meta name="description" content={titles.home.description()} />

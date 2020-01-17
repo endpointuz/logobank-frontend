@@ -104,6 +104,7 @@ class SingleLogo extends React.Component {
             description={logoDetail.description}
             files={logoDetail.files}
             logoDetailStatus={logoDetailStatus}
+            categories={this.props.categories}
           />
         </section>
         <section className="morelogos">

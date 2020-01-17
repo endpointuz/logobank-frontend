@@ -22,6 +22,7 @@ import './assets/scss/index.scss';
 import routes from '../utils/routes.js';
 import createStore from '../utils/createStore';
 import { ScrollToTop } from './components/util';
+import * as actions from './actions';
 
 moment.locale('ru');
 
@@ -36,6 +37,5 @@ const jsx = (
     </Router>
   </Provider>
 );
-
 
 ReactDOM.hydrate(jsx, document.getElementById('app'));

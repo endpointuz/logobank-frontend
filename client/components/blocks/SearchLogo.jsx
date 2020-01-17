@@ -6,7 +6,7 @@ const { SearchInput } = Form;
 
 const SearchLogo = ({ handleChange, handleSubmit, visibleResults, onFocus, onBlur }) => (
   <Form onSubmit={handleSubmit} change={handleChange}>
-    <SearchInput prefix={MdSearch} buttonText="НАЙТИ" name="search" placeholder="Введите название компании или бренда" visibleResults={visibleResults} onFocus={onFocus} onBlur={onBlur} />
+    <SearchInput prefix={MdSearch} buttonText="НАЙТИ" name="search" placeholder="Введите название компании или бренда" visibleResults={visibleResults} />
   </Form>
 );
 

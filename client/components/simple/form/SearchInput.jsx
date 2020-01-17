@@ -30,8 +30,6 @@ const SearchInput = (props) => {
         name="search"
         value={value.value}
         autoComplete="off"
-        onFocus={props.onFocus}
-        onBlur={props.onBlur}
         {...rest}
       />
       <button type="submit" className="mcs-form-search-submit">{buttonText}</button>

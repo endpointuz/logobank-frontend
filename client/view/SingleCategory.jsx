@@ -21,6 +21,7 @@ const mapStateToProps = state => ({
 const actionsCreators = {
   getCategories: actions.getCategories,
   getLogos: actions.getLogos,
+  blur: actions.searchBlur,
 };
 
 @withRouter
@@ -68,7 +69,7 @@ class SingleCategory extends React.Component {
     const [currentCategory] = categories.filter(category => String(category.id) === String(currentSlug));
 
     return (
-      <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
+      <div className={`wrapper ${this.state.visible ? '' : 'load'}`} onClick={() => this.props.blur()}>
         <Helmet>
           <title>{titles.singleCategory.title(currentCategory.name)}</title>
           <meta name="description" content={titles.singleCategory.description(currentCategory.name)} />

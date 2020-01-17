@@ -19,6 +19,7 @@ const mapStateToProps = (state) => ({
 const actionsCreators = {
   getCategories: actions.getCategories,
   getLogos: actions.getLogos,
+  blur: actions.searchBlur,
 };
 
 @withRouter
@@ -69,7 +70,7 @@ class SearchResults extends React.Component {
     }));
 
     return (
-      <div className={`wrapper ${this.state.visible ? '' : 'load'}`}>
+      <div className={`wrapper ${this.state.visible ? '' : 'load'}`} onClick={() => this.props.blur()}>
         <Helmet>
           {/*<title>{frontTitle.homepage.title}</title>*/}
           {/*<meta name="description" content={frontTitle.homepage.description} />*/}

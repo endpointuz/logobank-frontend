@@ -76,3 +76,17 @@ html, body {
 
 
 }
+
+.bg-white {
+  background-color: #fff;
+}
+.cell-category {
+  background-color: #f5f7fd;
+  margin-bottom: 0;
+  outline: 1px solid #f5f7fd;
+  padding-left: 40px;
+  display: none;
+  @media (min-width: 992px) {
+    display: block;
+  }
+}
